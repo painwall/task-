@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>-1</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="tasks_action">
+    <property name="title">
+     <string>Задачи</string>
+    </property>
+    <addaction name="addTask_action"/>
+   </widget>
+   <widget class="QMenu" name="dates_action">
+    <property name="title">
+     <string>Дата</string>
+    </property>
+    <addaction name="today_action"/>
+    <addaction name="allTime_action"/>
+   </widget>
+   <widget class="QMenu" name="tag_action">
+    <property name="title">
+     <string>Теги</string>
+    </property>
+    <addaction name="addTag_action"/>
+    <addaction name="listTags_action"/>
+   </widget>
+   <widget class="QMenu" name="settings_action">
+    <property name="title">
+     <string>Настройки</string>
+    </property>
+    <addaction name="all_settings_action"/>
+   </widget>
+   <addaction name="tasks_action"/>
+   <addaction name="dates_action"/>
+   <addaction name="tag_action"/>
+   <addaction name="settings_action"/>
+  </widget>
+  <action name="addTask_action">
+   <property name="text">
+    <string>Создать задачу</string>
+   </property>
+  </action>
+  <action name="today_action">
+   <property name="text">
+    <string>Сегодня</string>
+   </property>
+  </action>
+  <action name="tomorrow_action">
+   <property name="text">
+    <string>Завтра (нет)</string>
+   </property>
+  </action>
+  <action name="day_action">
+   <property name="text">
+    <string>День (нет)</string>
+   </property>
+  </action>
+  <action name="week_action">
+   <property name="text">
+    <string>Неделя (нет)</string>
+   </property>
+  </action>
+  <action name="moth_action">
+   <property name="text">
+    <string>Месяц (нет)</string>
+   </property>
+  </action>
+  <action name="allTime_action">
+   <property name="text">
+    <string>Всё время</string>
+   </property>
+  </action>
+  <action name="addTag_action">
+   <property name="text">
+    <string>Добавить тег</string>
+   </property>
+  </action>
+  <action name="listTags_action">
+   <property name="text">
+    <string>Список тегов</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>Создать проект</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>Список проектов</string>
+   </property>
+  </action>
+  <action name="addProject_action">
+   <property name="text">
+    <string>Создать проект</string>
+   </property>
+  </action>
+  <action name="listProject_action">
+   <property name="text">
+    <string>Список проектов</string>
+   </property>
+  </action>
+  <action name="loadProject_action">
+   <property name="text">
+    <string>Загрузить свой проект</string>
+   </property>
+  </action>
+  <action name="all_settings_action">
+   <property name="text">
+    <string>Все настройки</string>
+   </property>
+  </action>
+  <action name="tag_view_tasks_action">
+   <property name="text">
+    <string>По тегам</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
