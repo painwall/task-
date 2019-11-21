@@ -136,8 +136,8 @@ class Task(QWidget):
                         self.ban()
                         ID_TASK_FOR_SUBTASK = len(list_id)
                         cur.execute(
-                            'INSERT INTO {}(type, id, name) VALUES("{}", {}, "{}")'.format(table, typeStr, n,
-                                                                                           self.textEdit_nameTask.toPlainText()))
+                            'INSERT INTO {}(type, id, name) VALUES("{}", {}, "{}")'.
+                                format(table, typeStr, n, self.textEdit_nameTask.toPlainText()))
                         if self.textEdit_descriptionTask.toPlainText() != '':
                             self.add_description(typeStr, len(list_id), cur)
 
@@ -149,8 +149,8 @@ class Task(QWidget):
                 self.ban()
                 n = 0
                 ID_TASK_FOR_SUBTASK = int(n)
-                cur.execute('INSERT INTO {}(type, id, name) VALUES("{}", {}, "{}")'.format(table, typeStr, n,
-                                                                                           self.textEdit_nameTask.toPlainText()))
+                cur.execute('INSERT INTO {}(type, id, name) VALUES("{}", {}, "{}")'
+                            .format(table, typeStr, n, self.textEdit_nameTask.toPlainText()))
                 if self.textEdit_descriptionTask.toPlainText() != '':
                     self.add_description(typeStr, n, cur)
                 if self.cb_dataTask.isChecked():
@@ -242,10 +242,8 @@ class Subtask(QWidget):  # все тоже самое что и class Task
                     elif n == len(list_id) - 1:
                         n = len(list_id)
                         cur.execute(
-                            'INSERT INTO {}(type, id, idTask, name) VALUES("{}", {}, {}, "{}")'.format(table, typeStr,
-                                                                                                       n,
-                                                                                                       ID_TASK_FOR_SUBTASK,
-                                                                                                       self.textEdit_nameTask.toPlainText()))
+                            'INSERT INTO {}(type, id, idTask, name) VALUES("{}", {}, {}, "{}")'.
+                                format(table, typeStr, n, ID_TASK_FOR_SUBTASK, self.textEdit_nameTask.toPlainText()))
                         if self.textEdit_descriptionTask.toPlainText() != '':
                             self.add_description(typeStr, len(list_id), cur)
 
@@ -256,9 +254,8 @@ class Subtask(QWidget):  # все тоже самое что и class Task
             elif list_id == []:
                 n = 0
                 cur.execute(
-                    'INSERT INTO {}(type, id, idTask, name) VALUES("{}", {}, {}, "{}")'.format(table, typeStr, n,
-                                                                                               ID_TASK_FOR_SUBTASK,
-                                                                                               self.textEdit_nameTask.toPlainText()))
+                    'INSERT INTO {}(type, id, idTask, name) VALUES("{}", {}, {}, "{}")'
+                        .format(table, typeStr, n, ID_TASK_FOR_SUBTASK, self.textEdit_nameTask.toPlainText()))
                 if self.textEdit_descriptionTask.toPlainText() != '':
                     self.add_description(typeStr, n, cur)
 
@@ -266,6 +263,7 @@ class Subtask(QWidget):  # все тоже самое что и class Task
                     self.add_date(typeStr, n, cur)
                     if self.cb_timeTask.isChecked():
                         self.add_time(typeStr, n, cur)
+
         self.id_subtask = n
         con.commit()
         con.close()
@@ -273,18 +271,16 @@ class Subtask(QWidget):  # все тоже самое что и class Task
         self.btn_enterTask.setEnabled(False)
 
     def add_description(self, typeStr, n, cur):
-        cur.execute('INSERT INTO idDescription(type, id, description) VALUES("{}", {}, "{}")'.format(typeStr, n,
-                                                                                                     self.textEdit_descriptionTask.toPlainText()))
+        cur.execute('INSERT INTO idDescription(type, id, description) VALUES("{}", {}, "{}")'
+                    .format(typeStr, n, self.textEdit_descriptionTask.toPlainText()))
 
     def add_date(self, typeStr, n, cur):
-        cur.execute('INSERT INTO idDate(type, id, date) VALUES("{}", {}, "{}")'.format(typeStr, n,
-                                                                                       self.dateEdit_task.date().toString(
-                                                                                           'dd.MM.yyyy')))
+        cur.execute('INSERT INTO idDate(type, id, date) VALUES("{}", {}, "{}")'
+                    .format(typeStr, n, self.dateEdit_task.date().toString('dd.MM.yyyy')))
 
     def add_time(self, typeStr, n, cur):
-        cur.execute('INSERT INTO idTime(type, id, time) VALUES("{}", {}, "{}")'.format(typeStr, n,
-                                                                                       self.timeEdit_task.time().toString(
-                                                                                           'hh:mm')))
+        cur.execute('INSERT INTO idTime(type, id, time) VALUES("{}", {}, "{}")'
+                    .format(typeStr, n, self.timeEdit_task.time().toString('hh:mm')))
 
     def show_add_tags(self):
         self.menuTags = MenuAddTags('st', self.id_subtask)
@@ -432,9 +428,8 @@ class MenuAddTags(QWidget):
         cur = con.cursor()
         cur.execute('DELETE FROM idListTags WHERE type = "{}" and id = {}'.format(self.type, self.id))
         if self.list_tags != []:
-            cur.execute('INSERT INTO idListTags(type, id, tags) VALUES("{}", {},  "{}")'.format(self.type, self.id,
-                                                                                                ' '.join(
-                                                                                                    self.list_tags)))
+            cur.execute('INSERT INTO idListTags(type, id, tags) VALUES("{}", {},  "{}")'
+                        .format(self.type, self.id, ' '.join(self.list_tags)))
         con.commit()
         con.close()
         self.close()
